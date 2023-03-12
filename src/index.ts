@@ -1,7 +1,24 @@
-import { Hono } from 'hono'
+import { Hono } from 'hono';
 
-const app = new Hono()
+type Bindings = {
+  GO_URLS: KVNamespace;
+};
 
-app.get('/', (c) => c.text('Hello Hono!'))
+const app = new Hono<{ Bindings: Bindings }>();
 
-export default app
+app.get('/', (c) =>
+  c.redirect('https://akashrajpurohit.com/?ref=go.akashrajpurohit.com')
+);
+
+app.get('/:text', async (c) => {
+  const text = c.req.param('text');
+  const url = await c.env.GO_URLS.get(text);
+
+  if (!url) {
+    return c.redirect('https://akashrajpurohit.com/404/?ref=go.akashrajpurohit.com');
+  }
+
+  return c.redirect(url, 307);
+});
+
+export default app;
