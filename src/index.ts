@@ -17,8 +17,12 @@ app.get('/:text', async (c) => {
   if (!url) {
     return c.redirect('https://akashrajpurohit.com/404/?ref=go.akashrajpurohit.com');
   }
+  
+  const uri = new URL(url);
+  uri.searchParams.append('ref', 'go.akashrajpurohit.com');
+  const urlWithRef = uri.toString();
 
-  return c.redirect(url, 307);
+  return c.redirect(urlWithRef, 307);
 });
 
 export default app;
