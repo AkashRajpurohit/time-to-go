@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev --local",
-    "deploy": "wrangler publish",
+    "deploy": "wrangler deploy",
     "format": "prettier --write ."
   },
   "dependencies": {
