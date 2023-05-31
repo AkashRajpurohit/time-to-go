@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "wrangler dev --local",
+    "dev": "wrangler dev",
+    "dev:remote": "wrangler dev --remote",
     "deploy": "wrangler deploy",
     "format": "prettier --write ."
   },
