@@ -31,4 +31,17 @@ app.get('/:text', async (c) => {
   return c.redirect(urlWithRef, 307);
 });
 
+app.notFound((c) => {
+  const { NOT_FOUND_REDIRECT_URL, REFERRER_TEXT } = c.env;
+  if (NOT_FOUND_REDIRECT_URL) {
+    const redirectUrl = appendReferrerTextToUrl(
+      NOT_FOUND_REDIRECT_URL,
+      REFERRER_TEXT
+    );
+    return c.redirect(redirectUrl);
+  }
+
+  return c.text('URL not found', 404)
+});
+
 export default app;
