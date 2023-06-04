@@ -10,11 +10,12 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.get('/', (c) =>
-  c.redirect('https://github.com/AkashRajpurohit/time-to-go')
+  c.redirect('https://github.com/AkashRajpurohit/time-to-go', 307)
 );
 
-app.get('/:text', async (c) => {
-  const text = c.req.param('text');
+app.get('*', async (c) => {
+  // Get the URL pathname as input text minus the leading "/"
+  const text = new URL(c.req.url).pathname.slice(1);
   const { NOT_FOUND_REDIRECT_URL, REFERRER_TEXT } = c.env;
   const url = await c.env.GO_URLS.get(text);
 
@@ -29,19 +30,6 @@ app.get('/:text', async (c) => {
   const urlWithRef = appendReferrerTextToUrl(url, REFERRER_TEXT);
 
   return c.redirect(urlWithRef, 307);
-});
-
-app.notFound((c) => {
-  const { NOT_FOUND_REDIRECT_URL, REFERRER_TEXT } = c.env;
-  if (NOT_FOUND_REDIRECT_URL) {
-    const redirectUrl = appendReferrerTextToUrl(
-      NOT_FOUND_REDIRECT_URL,
-      REFERRER_TEXT
-    );
-    return c.redirect(redirectUrl);
-  }
-
-  return c.text('URL not found', 404)
-});
+})
 
 export default app;
