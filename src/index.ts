@@ -20,11 +20,16 @@ app.get('*', async (c) => {
   const url = await c.env.GO_URLS.get(text);
 
   if (!url) {
-    const redirectUrl = appendReferrerTextToUrl(
-      NOT_FOUND_REDIRECT_URL,
-      REFERRER_TEXT
-    );
-    return c.redirect(redirectUrl);
+    if (NOT_FOUND_REDIRECT_URL) {
+      const redirectUrl = appendReferrerTextToUrl(
+        NOT_FOUND_REDIRECT_URL,
+        REFERRER_TEXT
+      );
+      return c.redirect(redirectUrl);
+    }
+
+    // NOT_FOUND_REDIRECT_URL is not configured so just return 404 response
+    return c.text('Not found', 404);
   }
 
   const urlWithRef = appendReferrerTextToUrl(url, REFERRER_TEXT);
