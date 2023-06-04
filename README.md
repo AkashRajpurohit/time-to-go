@@ -87,12 +87,12 @@ _All of the tokens mentioned in this section are required._
 To deploy Time to Go, follow these steps:
 
 1. [Fork this repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to your own GitHub account.
-2. Add the environment variables for the forked repository from the Github Actions section.
+2. Add the environment variables for the forked repository from the [Github Actions](#for-github-actions-) section.
 3. Clone the forked repository to your local machine.
 4. Navigate to the repository directory.
 5. Install the dependencies by running the command: `pnpm install`.
 6. Edit the `wrangler.toml` file and update the values for `kv_namespaces` with the KV id we created earlier for both `id` and `preview_id`.
-7. Update the `vars` section to add the environment variables from the Cloudflare worker section.
+7. Update the `vars` section to add the environment variables from the [Cloudflare worker](#for-cloudflare-worker-%EF%B8%8F) section.
 8. Commit your changes and push them to your forked repository.
 9. GitHub Actions will automatically trigger the deployment process. Wait for the action to complete.
 
