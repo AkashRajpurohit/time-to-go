@@ -2,10 +2,11 @@ name = "go-urls"
 main = "src/index.ts"
 compatibility_date = "2023-01-01"
 
-kv_namespaces = [
-  { binding = "GO_URLS", id = "6ec3404005ee4537bcb35a7660c4f93c", preview_id = "6ec3404005ee4537bcb35a7660c4f93c" }
-]
+[[kv_namespaces]]
+binding = "GO_URLS"
+preview_id = "6ec3404005ee4537bcb35a7660c4f93c"
+id = "6ec3404005ee4537bcb35a7660c4f93c"
 
 [vars]
-# - NOT_FOUND_REDIRECT_URL (required)
-# - REFERRER_TEXT (optional)
+NOT_FOUND_REDIRECT_URL = "https://akashrajpurohit.com/404/"
+REFERRER_TEXT = "go.akashrajpurohit.com"
