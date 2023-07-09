@@ -33,7 +33,7 @@
 
 Time to Go is a utility service built on top of Cloudflare Workers that allows you share Go URLs.
 
-> Read more about Go URLs by visiting this Go URL https://go.akashrajpurohit.com/b/go-urls
+> Read more about Go URLs by visiting this Go URL [https://go.akashrajpurohit.com/b/go-urls](https://go.akashrajpurohit.com/b/go-urls?via=github-desc)
 
 # Motivation 💪
 
