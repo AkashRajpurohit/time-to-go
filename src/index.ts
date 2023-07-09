@@ -14,8 +14,11 @@ app.get('/', (c) =>
 );
 
 app.get('*', async (c) => {
+  const incomingUrl = new URL(c.req.url);
+  const existingSearchParams = incomingUrl.searchParams;
+  
   // Get the URL pathname as input text minus the leading "/"
-  const text = new URL(c.req.url).pathname.slice(1);
+  const text = incomingUrl.pathname.slice(1);
   const { NOT_FOUND_REDIRECT_URL, REFERRER_TEXT } = c.env;
   const url = await c.env.GO_URLS.get(text);
 
@@ -23,7 +26,8 @@ app.get('*', async (c) => {
     if (NOT_FOUND_REDIRECT_URL) {
       const redirectUrl = appendReferrerTextToUrl(
         NOT_FOUND_REDIRECT_URL,
-        REFERRER_TEXT
+        REFERRER_TEXT,
+        existingSearchParams
       );
       return c.redirect(redirectUrl);
     }
@@ -32,7 +36,7 @@ app.get('*', async (c) => {
     return c.text('Not found', 404);
   }
 
-  const urlWithRef = appendReferrerTextToUrl(url, REFERRER_TEXT);
+  const urlWithRef = appendReferrerTextToUrl(url, REFERRER_TEXT, existingSearchParams);
 
   return c.redirect(urlWithRef, 307);
 })
