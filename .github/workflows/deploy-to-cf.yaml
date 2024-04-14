@@ -16,7 +16,7 @@ jobs:
     name: Deploy
     steps:
       - name: Checkout 🧳
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PNPM ⚙️
         uses: AkashRajpurohit/.github/.github/actions/setup-pnpm@main
