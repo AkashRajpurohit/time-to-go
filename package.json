@@ -7,11 +7,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "hono": "^3.0.0"
+    "hono": "^4.6.8"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20221111.1",
-    "prettier": "^2.8.4",
-    "wrangler": "^3.0.0"
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "prettier": "^3.3.3",
+    "wrangler": "^3.84.1"
   }
 }
