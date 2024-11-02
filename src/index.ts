@@ -38,6 +38,8 @@ app.get('*', async (c) => {
 
   const urlWithRef = appendReferrerTextToUrl(url, REFERRER_TEXT, existingSearchParams);
 
+  console.log({ text, url })
+
   return c.redirect(urlWithRef, 307);
 })
 

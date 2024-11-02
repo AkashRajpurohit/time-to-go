@@ -10,3 +10,7 @@ id = "6ec3404005ee4537bcb35a7660c4f93c"
 [vars]
 NOT_FOUND_REDIRECT_URL = "https://akashrajpurohit.com/404/"
 REFERRER_TEXT = "go.akashrajpurohit.com"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
